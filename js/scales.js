@@ -212,7 +212,7 @@ const scales = {
     // 计算特定格式的分数显示
     formatScore: (values, totalScore) => {
       return {
-        total: `${totalScore}/8`,
+        total: `${totalScore}`,
         detail: ''
       };
     },
@@ -316,6 +316,100 @@ gfr: {
       risk: '重度下降',
       text: '请尽快就医'
     }
+  ]
+},
+
+
+flacc: {
+  id:'flacc',
+  name:'疼痛FLACC评分法',
+  description:'评估不能表达疼痛的儿童的疼痛程度',
+  type:"radio",
+  sections:[
+    {
+      id:'face',
+      title:'脸部表情',
+      name:'face',
+      options:[
+        {value:'0', score:0, label:'微笑或无特殊表情',checked:true},
+        {value:"1", score:1, label:'偶尔出现痛苦表情，皱眉、不愿交流'},
+        {value:'2', score:2, label:'经常或持续出现下颌颤抖或紧咬下唇'}
+      ]
+    },
+    {
+      id:'legs',
+      title:'腿部表现',
+      name:'legs',
+      options:[
+        {value:'0', score:0, label:'放松或保持正常姿势', checked:true},
+        {value:'1', score:1, label:'不安、紧张，维持不舒服的姿势'},
+        {value:'2', score:2, label:'踢腿或腿部拖动'}
+      ]
+    },
+    {
+      id:'activity',
+      title:'活动度',
+      name:'activity',
+      options:[
+        {value:'0', score:0, label:'安静躺着，正常体位，或轻松活动', checked:true},
+        {value:'1', score:1, label:'扭动，翻来覆去，紧张'},
+        {value:'2', score:2, label:'身体痉挛，成弓形，僵硬'}
+      ]
+    },
+    {
+      id:'cry',
+      title:'哭闹',
+      name:'cry',
+      options:[
+        {value:'0', score:0, label:'不哭（清醒或睡眠中）',checked:true},
+        {value:'1', score:1, label:'呻吟、啜泣，偶尔诉痛'},
+        {value:'2', score:2, label:'一直哭泣、尖叫、经常诉痛'}
+      ]
+    },
+    {
+      id:'consolability',
+      title:'可安慰性',
+      name:'consolability',
+      options:[
+        {value:'0', score:0, label:'满足、放松', checked:true},
+        {value:'1', score:1, label:'偶尔抚摸拥抱和语言安慰后可以被安慰'},
+        {value:'2', score:2, label:'难以被安慰'}
+      ]
+    }
+  ],
+  maxScore: 10,
+  calculateScore: (values) => {
+    return ['face','legs','activity','cry','consolability'].reduce((sum,key) => {
+      return sum + (parseInt(values[key]) || 0);
+    }, 0);
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total:`${totalScore}`,
+      detail:`面部${values.face}，腿部${values.legs}，活动性${values.activity}，哭闹${values.cry}，可安慰性 ${values.consolability}`
+    }
+  },
+  interpretations: [
+    {
+      condition: (score) => score == 0,
+      risk:'无痛',
+      text:'患者轻松舒适'
+     },
+     {
+       condition: (score) => score >= 1 && score <= 3,
+       risk:'轻度不适',
+       text:'患者感到轻度不适，可继续观察'
+      },
+      {
+        condition: (score) => score >= 4 && score <= 6,
+        risk: '中度疼痛',
+        text: '患者感到中度疼痛，建议采取镇痛措施'
+      },
+      {
+        condition: (score) => score >= 7,
+        risk:'重度疼痛',
+        text:'患者感到重度疼痛，建议采取镇痛措施'
+      }
   ]
 }
 
