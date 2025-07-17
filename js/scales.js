@@ -44,7 +44,7 @@ const scales = {
   phoenix: {
     id: 'phoenix',
     name: 'Phoenix脓毒症评分',
-    description: '评估儿童脓毒症严重程度及感染性休克风险的工具',
+    description: '评估儿童脓毒症严重程度及感染性休克风险的工具，',
     type: 'radio',
     sections: [
       {
@@ -78,16 +78,39 @@ const scales = {
           { value: '2', score: 2, label: '>10.9 mmol/L', checked: false }
         ]
       },
-      {
-        id: 'map',
-        title: '心血管 - 平均动脉压(MAP)（最高2分）',
-        name: 'map',
-        options: [
-          { value: '0', score: 0, label: '正常范围（符合年龄的MAP正常值）', checked: true },
-          { value: '1', score: 1, label: '轻度低于正常（符合年龄的MAP轻度异常）', checked: false },
-          { value: '2', score: 2, label: '显著低于正常（符合年龄的MAP显著异常）', checked: false }
-        ]
-      },
+  {
+  id: 'map',
+  title: '心血管 - 平均动脉压(MAP)（最高2分）',
+  name: 'map',
+  options: [
+    {
+      value: '0',
+      score: 0,
+     label: '正常范围（符合年龄的MAP正常值）<br>' +
+         '<1个月: >30 mmHg<br>' +
+         '1-11个月: >38 mmHg<br>' +
+         '1-<2岁: >43 mmHg<br>' +
+         '2-<5岁: >44 mmHg<br>' +
+         '5-<12岁: >48 mmHg<br>' +
+         '12-<18岁: >51 mmHg',
+      checked: true
+    },
+    {
+      value: '1',
+      score: 1,
+      label: '轻度低于正常（符合年龄的MAP轻度异常）',
+      checked: false
+    },
+    {
+      value: '2',
+      score: 2,
+      label: '显著低于正常（符合年龄的MAP显著异常）',
+      checked: false
+    }
+  ]
+}
+
+,
       {
         id: 'coagulation',
         title: '凝血（最高2分）',
