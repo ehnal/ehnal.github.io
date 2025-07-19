@@ -45,12 +45,12 @@ const scales = {
     id: 'phoenix',
     name: 'Phoenix脓毒症评分',
     description: '评估儿童脓毒症严重程度及感染性休克风险的工具，',
-    type: 'radio',
     sections: [
       {
         id: 'respiratory',
         title: '呼吸（最高3分）',
         name: 'respiratory',
+        type: 'radio',
         options: [
           { value: '0', score: 0, label: 'PaO2/FiO2 ≥400 或 SpO2/FiO2 ≥292', checked: true },
           { value: '1', score: 1, label: '任何呼吸支持上的 PaO2/FiO2 <400 或 SpO2/FiO2 <292', checked: false },
@@ -62,6 +62,7 @@ const scales = {
         id: 'vasoactive',
         title: '心血管 - 血管活性药物（最高2分）',
         name: 'vasoactive',
+        type: 'radio',
         options: [
           { value: '0', score: 0, label: '无血管活性药物使用', checked: true },
           { value: '1', score: 1, label: '使用1种血管活性药物', checked: false },
@@ -72,6 +73,7 @@ const scales = {
         id: 'lactate',
         title: '心血管 - 乳酸（最高2分）',
         name: 'lactate',
+        type: 'radio',
         options: [
           { value: '0', score: 0, label: '<5 mmol/L', checked: true },
           { value: '1', score: 1, label: '5-10.9 mmol/L', checked: false },
@@ -82,6 +84,7 @@ const scales = {
   id: 'map',
   title: '心血管 - 平均动脉压(MAP)（最高2分）',
   name: 'map',
+  type: 'radio',
   options: [
     {
       value: '0',
@@ -115,6 +118,7 @@ const scales = {
         id: 'coagulation',
         title: '凝血（最高2分）',
         name: 'coagulation',
+        type: 'radio',
         options: [
           { value: '0', score: 0, label: '无凝血异常', checked: true },
           { value: '1', score: 1, label: '单项凝血异常（任一项异常）', checked: false },
@@ -125,6 +129,7 @@ const scales = {
         id: 'neurologic',
         title: '神经系统（最高2分）',
         name: 'neurologic',
+        type: 'radio',
         options: [
           { value: '0', score: 0, label: 'GCS >10且瞳孔反应正常', checked: true },
           { value: '1', score: 1, label: 'GCS ≤10', checked: false },
@@ -136,6 +141,7 @@ const scales = {
         id: 'cardiovascular_status',
         title: '心血管状态（不要修改此项）',
         name: 'cardiovascular_status',
+        type: 'radio',
         options: [
           { value: '0', score: 0, label: '无心血管异常', checked: true },
           { value: '1', score: 0, label: '有心血管异常', checked: false }
@@ -207,12 +213,12 @@ const scales = {
     id: 'stopbang',
     name: 'STOP-BANG评分',
     description: '用于评估阻塞性睡眠呼吸暂停综合征风险的工具',
-    type: 'checkbox',
     sections: [
       {
         id: 'factors',
         title: '风险因素',
         name: 'stopbang',
+        type: 'checkbox',
         options: [
           { value: 'snoring', score: 1, label: '打鼾 (响亮到能透过关闭的房门听到)', checked: false },
           { value: 'tired', score: 1, label: '白天易疲劳、嗜睡', checked: false },
@@ -269,13 +275,13 @@ gfr: {
   id: 'gfr',
   name: 'GFR估算（2021 CKD-EPI）',
   description: '根据年龄、性别和血清肌酐估算肾小球滤过率（eGFR）',
-  type: 'radio',  
   maxScore: 150,
   sections: [
     {
       id: 'sex',
       title: '性别',
       name: 'sex',
+      type: 'radio',  
       options: [
         { value: 'male', score: 0, label: '男性', checked: true },
         { value: 'female', score: 0, label: '女性' }
@@ -285,6 +291,7 @@ gfr: {
       id: 'age',
       title: '年龄（岁）',
       name: 'age',
+      type: 'radio',  
       options: [
         { input: true, label: '请输入年龄', name: 'age', inputType: 'number', min: 1 }
       ]
@@ -293,6 +300,7 @@ gfr: {
       id: 'scr',
       title: '血清肌酐 Scr (mg/dL)',
       name: 'scr',
+      type: 'radio',  
       options: [
         { input: true, label: '请输入肌酐', name: 'scr', inputType: 'number', step: '0.01', min: 0 }
       ]
@@ -347,12 +355,12 @@ flacc: {
   id:'flacc',
   name:'疼痛FLACC评分法',
   description:'评估不能表达疼痛的儿童的疼痛程度',
-  type:"radio",
   sections:[
     {
       id:'face',
       title:'脸部表情',
       name:'face',
+      type:"radio",
       options:[
         {value:'0', score:0, label:'微笑或无特殊表情',checked:true},
         {value:"1", score:1, label:'偶尔出现痛苦表情，皱眉、不愿交流'},
@@ -363,6 +371,7 @@ flacc: {
       id:'legs',
       title:'腿部表现',
       name:'legs',
+      type:"radio",
       options:[
         {value:'0', score:0, label:'放松或保持正常姿势', checked:true},
         {value:'1', score:1, label:'不安、紧张，维持不舒服的姿势'},
@@ -373,6 +382,7 @@ flacc: {
       id:'activity',
       title:'活动度',
       name:'activity',
+      type:"radio",
       options:[
         {value:'0', score:0, label:'安静躺着，正常体位，或轻松活动', checked:true},
         {value:'1', score:1, label:'扭动，翻来覆去，紧张'},
@@ -383,6 +393,7 @@ flacc: {
       id:'cry',
       title:'哭闹',
       name:'cry',
+      type:"radio",
       options:[
         {value:'0', score:0, label:'不哭（清醒或睡眠中）',checked:true},
         {value:'1', score:1, label:'呻吟、啜泣，偶尔诉痛'},
@@ -393,6 +404,7 @@ flacc: {
       id:'consolability',
       title:'可安慰性',
       name:'consolability',
+      type:"radio",
       options:[
         {value:'0', score:0, label:'满足、放松', checked:true},
         {value:'1', score:1, label:'偶尔抚摸拥抱和语言安慰后可以被安慰'},
