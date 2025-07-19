@@ -19,6 +19,8 @@ class ScaleRenderer {
     const scaleElement = document.createElement('div');
     scaleElement.id = scaleConfig.id;
     scaleElement.className = 'tab-content';
+
+    const hasRadioSection = scaleConfig.sections.some(sec => sec.type === 'radio');
     
     // 添加量表标题和描述
     scaleElement.innerHTML = `
@@ -34,7 +36,7 @@ class ScaleRenderer {
         </div>
         <div class="result-content">
           <p>总分: <span id="${scaleConfig.id}-score">0</span>${scaleConfig.maxScore ? `/${scaleConfig.maxScore}` : ''}</p>
-          ${scaleConfig.type === 'radio' ? `<p>分项: <span id="${scaleConfig.id}-detail"></span></p>` : ''}
+          ${hasRadioSection ? `<p>分项: <span id="${scaleConfig.id}-detail"></span></p>` : ''}
           <p>风险级别: <span id="${scaleConfig.id}-risk">-</span></p>
           <p>解释: <span id="${scaleConfig.id}-interpretation">-</span></p>
         </div>
