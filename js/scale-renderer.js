@@ -99,7 +99,7 @@ class ScaleRenderer {
     }
 
     // 否则是默认的 radio / checkbox
-    const inputType = scaleConfig.type === 'radio' ? 'radio' : 'checkbox';
+    const inputType = section.type === 'radio' ? 'radio' : 'checkbox';
     const label = document.createElement('label');
     label.innerHTML = `
       <input 
