@@ -36,10 +36,10 @@ class ScaleController {
       const name = section.name;
       const inputs = document.querySelectorAll(`input[name="${name}"]`);
 
-      if (scaleConfig.type === 'radio') {
+      if (section.type === 'radio') {
         const checkedInput = Array.from(inputs).find(input => input.checked);
         if (checkedInput) values[section.id] = checkedInput.value;
-      } else if (scaleConfig.type === 'checkbox') {
+      } else if (section.type === 'checkbox') {
         const checkedInputs = Array.from(inputs).filter(input => input.checked);
         values[section.id] = checkedInputs.map(input => parseFloat(input.getAttribute('data-score')) || 0);
       }
