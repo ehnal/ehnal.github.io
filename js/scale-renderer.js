@@ -18,7 +18,7 @@ class ScaleRenderer {
     // 创建量表容器
     const scaleElement = document.createElement('div');
     scaleElement.id = scaleConfig.id;
-    scaleElement.className = 'tab-content';
+    scaleElement.className = 'scale-panel';
 
     const hasRadioSection = scaleConfig.sections.some(sec => sec.type === 'radio');
     
