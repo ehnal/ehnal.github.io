@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>医学评分量表系统</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医学评分量表系统</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>医学评分量表系统</h1>
-        
-        <!-- 标签页导航 - 改为空容器，将由JavaScript动态填充 -->
-        <div class="tabs">
-            <!-- 标签按钮将由JavaScript自动生成 -->
-        </div>
-        
-        <!-- 量表内容会由JavaScript动态渲染 -->
-    </div>
 
-    <!-- 使用ES模块导入JavaScript -->
-    <script type="module" src="js/script.js"></script>
-</body>
-<!-- 在body底部添加 -->
-<script>
-  // 确保页面加载时默认显示第一个量表
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      // 检查是否有活跃的量表
-      const activeContent = document.querySelector('.tab-content.active');
-      if (!activeContent) {
-        // 如果没有活跃量表，点击第一个标签按钮
-        const firstButton = document.querySelector('.tab-btn');
-        if (firstButton) {
-          firstButton.click();
-          console.log('已激活第一个量表');
+  <div class="app-container">
+    <!-- 左侧导航栏 -->
+    <aside class="sidebar">
+      <!-- 搜索框 -->
+      <input type="text" id="search-input" placeholder="搜索量表…" />
+
+      <!-- 收藏列表 -->
+      <div class="section-title">收藏</div>
+      <ul id="favorite-list"></ul>
+
+      <!-- 所有量表列表 -->
+      <div class="section-title">所有量表</div>
+      <ul id="scale-list"></ul>
+    </aside>
+
+    <!-- 量表内容区域 -->
+    <main class="main-content">
+      <div class="container">
+        <h1>医学评分量表系统</h1>
+        <!-- 加载当前选中的量表 -->
+        <div id="scale-container"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 使用ES模块导入主程序 -->
+  <script type="module" src="js/script.js"></script>
+
+  <!-- 默认激活第一个量表（保留） -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const activeContent = document.querySelector('.tab-content.active');
+        if (!activeContent) {
+          const firstButton = document.querySelector('.tab-btn');
+          if (firstButton) {
+            firstButton.click();
+            console.log('已激活第一个量表');
+          }
         }
-      }
-    }, 500); // 给主脚本足够的初始化时间
-  });
-</script>
+      }, 500);
+    });
+  </script>
+</body>
 </html>
