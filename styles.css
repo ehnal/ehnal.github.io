@@ -114,7 +114,7 @@ label:hover {
     background-color: #f0f7ff;
 }
 
-input[type="radio"], 
+input[type="radio"],
 input[type="checkbox"] {
     margin-right: 10px;
     margin-top: 3px;
@@ -163,8 +163,17 @@ input[type="checkbox"] {
     color: #3498db;
 }
 
+.scale-panel {
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+
 /* 响应式设计 */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .container {
         margin: 1rem;
         padding: 1rem;
@@ -186,4 +195,77 @@ input[type="checkbox"] {
         border-left-color: #3498db;
         background-color: #f0f7ff;
     }
+}
+
+
+/* 左侧导航栏 */
+.app-container {
+    display: flex;
+     align-items: stretch;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #f7f9fc;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+
+/* 搜索框 */
+#search-input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* 右侧量表内容 */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    box-sizing: border-box;
+}
+
+
+/* 导航栏标题 */
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* 悬停/选中 */
+
+#scale-list li,
+#favorite-list li {
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#scale-list li:hover,
+#favorite-list li:hover {
+  background-color: #e6f0ff;
+}
+
+/* 被选中的量表 */
+#scale-list li.active,
+#favorite-list li.active {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
 }
