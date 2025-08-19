@@ -36,9 +36,10 @@ function initScaleList() {
 
 function initSearchFilter() {
   const input = document.getElementById('search-input');
-  if (!input) return;
+  const button = document.getElementById('search-button');
+  if (!input || !button) return;
 
-  input.addEventListener('input', () => {
+  button.addEventListener('click', () => {
     const keyword = input.value.trim().toLowerCase();
 
     document.querySelectorAll('#scale-list li').forEach(li => {
