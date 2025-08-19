@@ -218,13 +218,22 @@ input[type="checkbox"] {
 
 
 /* 搜索框 */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
 #search-input {
-    width: 100%;
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 15px;
+  width: 140px; 
+  padding: 6px;
+}
+
+#search-button {
+  padding: 6px 10px;
+  cursor: pointer;
 }
 
 /* 右侧量表内容 */
