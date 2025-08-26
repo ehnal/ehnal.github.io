@@ -167,7 +167,7 @@ function renderScaleListPage(page = 1) {
   pageItems.forEach(scaleId => {
     const li = document.createElement('li');
     li.textContent = scales[scaleId].name;
-    li.setAttribute('data-tab', scaleId);
+ li.setAttribute('data-scale-id', scaleId); // ← 和事件、默认选中保持一致
     scaleListContainer.appendChild(li);
   });
 
