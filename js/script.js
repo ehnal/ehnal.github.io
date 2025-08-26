@@ -23,30 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 
 function initScaleList() {
-  const scaleList = document.getElementById('scale-list');
-  if (!scaleList) return;
-
-  Object.entries(scales).forEach(([scaleId, scaleConfig]) => {
-    const li = document.createElement('li');
-    li.textContent = scaleConfig.name;
-    li.dataset.scaleId = scaleId;
-    scaleList.appendChild(li);
-  });
+  filteredScaleIds = Object.keys(scales);
+  currentPage = 1;
+  renderScaleListPage(currentPage);
 }
+
 
 function initSearchFilter() {
   const input = document.getElementById('search-input');
   const button = document.getElementById('search-button');
   if (!input || !button) return;
 
-  button.addEventListener('click', () => {
+   button.addEventListener('click', () => {
     const keyword = input.value.trim().toLowerCase();
 
-    document.querySelectorAll('#scale-list li').forEach(li => {
-      const name = li.textContent.toLowerCase();
-      const match = name.includes(keyword);
-      li.style.display = match ? '' : 'none';
+    filteredScaleIds = Object.keys(scales).filter(id => {
+      const name = scales[id].name.toLowerCase();
+      return name.includes(keyword);
     });
+
+    currentPage = 1;
+    renderScaleListPage(currentPage);
   });
 }
 
@@ -148,4 +145,59 @@ function copyResult(tabId) {
       console.error('复制失败:', err);
       alert('复制失败，请手动复制。');
     });
+}
+
+
+/**
+ * 左侧量表栏分页
+ */
+
+let currentPage = 1;
+const itemsPerPage = 9;  //每一页展示多少个量表
+let filteredScaleIds = Object.keys(scales);
+
+function renderScaleListPage(page = 1) {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const scaleListContainer = document.getElementById('scale-list');
+  scaleListContainer.innerHTML = '';
+
+  const pageItems = filteredScaleIds.slice(startIndex, endIndex);
+  pageItems.forEach(scaleId => {
+    const li = document.createElement('li');
+    li.textContent = scales[scaleId].name;
+    li.setAttribute('data-tab', scaleId);
+    scaleListContainer.appendChild(li);
+  });
+
+  updatePaginationControls();
+}
+
+
+function updatePaginationControls() {
+  const pagination = document.getElementById('pagination');
+  pagination.innerHTML = '';
+
+  const totalPages = Math.ceil(filteredScaleIds.length / itemsPerPage);
+
+  if (currentPage > 1) {
+    const prev = document.createElement('button');
+    prev.textContent = '上一页';
+    prev.onclick = () => {
+      currentPage--;
+      renderScaleListPage(currentPage);
+    };
+    pagination.appendChild(prev);
+  }
+
+  if (currentPage < totalPages) {
+    const next = document.createElement('button');
+    next.textContent = '下一页';
+    next.onclick = () => {
+      currentPage++;
+      renderScaleListPage(currentPage);
+    };
+    pagination.appendChild(next);
+  }
 }

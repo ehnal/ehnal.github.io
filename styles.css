@@ -278,3 +278,13 @@ input[type="checkbox"] {
   color: #fff;
   font-weight: bold;
 }
+
+.pagination-controls {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.pagination-controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+}

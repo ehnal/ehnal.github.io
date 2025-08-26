@@ -543,511 +543,429 @@ flacc: {
 
 ,
 
-  chadsvasc: {
-  id: 'chadsvasc',
-  name: 'CHADSVASc评分',
-  description: '评估房颤患者卒中风险的工具',
+
+  
+
+  comfort: {
+  id: 'comfort',
+  name: 'COMFORT行为评分',
+  description: '用于评估儿童镇静和疼痛管理的工具',
   sections: [
     {
-      id: 'age',
-      title: '年龄',
-      name: 'age',
+      id: 'alertness',
+      title: '警觉程度',
+      name: 'alertness',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '小于65岁', checked: true },
-        { value: '1', score: 1, label: '65-74岁', checked: false },
-        { value: '2', score: 2, label: '大于等于75岁', checked: false }
+        { value: '1', score: 1, label: '深睡眠（闭眼睛，对环境变化没有反应）', checked: true },
+        { value: '2', score: 2, label: '浅睡眠（眼睛大多闭着，对环境变化偶有反应）', checked: false },
+        { value: '3', score: 3, label: '嗜睡（经常闭着眼睛，对环境的反应较差）', checked: false },
+        { value: '4', score: 4, label: '完全清醒和警觉（对环境变化有反应）', checked: false },
+        { value: '5', score: 5, label: '高度警觉（对环境刺激反应过度）', checked: false }
       ]
     },
     {
-      id: 'sex',
-      title: '性别',
-      name: 'sex',
+      id: 'calmness',
+      title: '平静或激动',
+      name: 'calmness',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '男性', checked: true },
-        { value: '1', score: 1, label: '女性', checked: false }
+        { value: '1', score: 1, label: '平静', checked: true },
+        { value: '2', score: 2, label: '轻度焦虑', checked: false },
+        { value: '3', score: 3, label: '焦虑', checked: false },
+        { value: '4', score: 4, label: '非常焦虑', checked: false },
+        { value: '5', score: 5, label: '惊恐', checked: false }
       ]
     },
     {
-      id: 'congestive_heart_failure_history',
-      title: '心力衰竭史',
-      name: 'congestive_heart_failure_history',
+      id: 'respiratory_response',
+      title: '呼吸反应 (MV) /哭闹',
+      name: 'respiratory_response',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '无', checked: true },
-        { value: '1', score: 1, label: '有', checked: false }
+        { value: '1', score: 1, label: '无咳嗽或无自主呼吸/安静呼吸，无哭声', checked: true },
+        { value: '2', score: 2, label: '偶有自主呼吸，对机械通气无对抗/偶尔哭泣或呻吟', checked: false },
+        { value: '3', score: 3, label: '偶有咳嗽或人机对抗/单声哭泣', checked: false },
+        { value: '4', score: 4, label: '人机对抗活跃，频繁咳嗽/哭泣', checked: false },
+        { value: '5', score: 5, label: '严重人机对抗，咳嗽或憋气/尖叫', checked: false }
       ]
     },
     {
-      id: 'hypertension_history',
-      title: '高血压史',
-      name: 'hypertension_history',
+      id: 'physical_activity',
+      title: '身体活动',
+      name: 'physical_activity',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '无', checked: true },
-        { value: '1', score: 1, label: '有', checked: false }
+        { value: '1', score: 1, label: '无自主活动', checked: true },
+        { value: '2', score: 2, label: '偶有轻微活动', checked: false },
+        { value: '3', score: 3, label: '频繁的轻微活动', checked: false },
+        { value: '4', score: 4, label: '四肢有力活动', checked: false },
+        { value: '5', score: 5, label: '躯干及头部有力活动', checked: false }
       ]
     },
     {
-      id: 'stroke_tia_thromboembolism_history',
-      title: '卒中/短暂性脑缺血发作/栓塞性事件历史',
-      name: 'stroke_tia_thromboembolism_history',
+      id: 'muscle_tone',
+      title: '肌张力',
+      name: 'muscle_tone',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '无', checked: true },
-        { value: '2', score: 2, label: '有', checked: false }
+        { value: '1', score: 1, label: '肌肉完全放松，无张力', checked: true },
+        { value: '2', score: 2, label: '肌张力减低', checked: false },
+        { value: '3', score: 3, label: '肌张力正常', checked: false },
+        { value: '4', score: 4, label: '肌张力增加，手指和脚趾弯曲', checked: false },
+        { value: '5', score: 5, label: '肌肉极度僵硬，手指和脚趾弯曲', checked: false }
       ]
     },
     {
-      id: 'vascular_disease_history_pior_MI_peripheral_artery_disease_or_aortic_plaque',
-      title: '(既往)冠状动脉疾病(包括前壁梗死、外周动脉疾病或主动脉粥样硬化病变)',
-      name: 'vascular_disease_history_pior_MI_peripheral_artery_disease_or_aortic_plaque',
+      id: 'facial_tension',
+      title: '面部紧张程度',
+      name: 'facial_tension',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '无', checked: true },
-        { value: '1', score: 1, label: '有', checked: false }
+        { value: '1', score: 1, label: '面部肌肉完全放松', checked: true },
+        { value: '2', score: 2, label: '面部肌肉张力正常，无面部肌肉紧张', checked: false },
+        { value: '3', score: 3, label: '面部部分肌肉张力增加', checked: false },
+        { value: '4', score: 4, label: '面部全部肌肉张力增加', checked: false },
+        { value: '5', score: 5, label: '面部扭曲，表情痛苦', checked: false }
       ]
     },
     {
-      id: 'diabetes_mellitus_history',
-      title: '糖尿病史',
-      name: 'diabetes_mellitus_history',
+      id: 'bp_map',
+      title: 'BP MAP',
+      name: 'bp_map',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '无', checked: true },
-        { value: '1', score: 1, label: '有', checked: false }
+        { value: '1', score: 1, label: '低于基础值', checked: true },
+        { value: '2', score: 2, label: '始终在基础值', checked: false },
+        { value: '3', score: 3, label: '偶尔升高>15%或更多（观察期间 1-3 次）', checked: false },
+        { value: '4', score: 4, label: '频繁升高>15%或更多（>1-3 次）', checked: false },
+        { value: '5', score: 5, label: '持续升高>15%', checked: false }
+      ]
+    },
+    {
+      id: 'heart_rate',
+      title: '心率',
+      name: 'heart_rate',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '低于基础值', checked: true },
+        { value: '2', score: 2, label: '始终在基础值', checked: false },
+        { value: '3', score: 3, label: '偶尔升高>15%或更多（观察期间 1-3 次）', checked: false },
+        { value: '4', score: 4, label: '频繁升高>15%或更多（>1-3 次）', checked: false },
+        { value: '5', score: 5, label: '持续升高>15%', checked: false }
       ]
     }
   ],
-  maxScore: 9,
+  maxScore: 40,
   calculateScore: (values) => {
-    const age = parseInt(values.age) || 0;
-    const sex = parseInt(values.sex) || 0;
-    const congestiveHeartFailure = parseInt(values.congestive_heart_failure_history) || 0;
-    const hypertension = parseInt(values.hypertension_history) || 0;
-    const strokeTIA = parseInt(values.stroke_tia_thromboembolism_history) || 0;
-    const vascularDisease = parseInt(values.vascular_disease_history_pior_MI_peripheral_artery_disease_or_aortic_plaque) || 0;
-    const diabetes = parseInt(values.diabetes_mellitus_history) || 0;
+    const alertness = parseInt(values.alertness) || 0;
+    const calmness = parseInt(values.calmness) || 0;
+    const respiratoryResponse = parseInt(values.respiratory_response) || 0;
+    const physicalActivity = parseInt(values.physical_activity) || 0;
+    const muscleTone = parseInt(values.muscle_tone) || 0;
+    const facialTension = parseInt(values.facial_tension) || 0;
+    const bpMap = parseInt(values.bp_map) || 0;
+    const heartRate = parseInt(values.heart_rate) || 0;
 
-    return age + sex + congestiveHeartFailure + hypertension + strokeTIA + vascularDisease + diabetes;
+    return alertness + calmness + respiratoryResponse + physicalActivity + muscleTone + facialTension + bpMap + heartRate;
   },
   formatScore: (values, totalScore) => {
     return {
       total: `${totalScore}`,
-      detail: `年龄: ${values.age}, 性别: ${values.sex}, 心力衰竭史: ${values.congestive_heart_failure_history}, 高血压史: ${values.hypertension_history}, 卒中/短暂性脑缺血发作/栓塞性事件历史: ${values.stroke_tia_thromboembolism_history}, 冠状动脉疾病: ${values.vascular_disease_history_pior_MI_peripheral_artery_disease_or_aortic_plaque}, 糖尿病史: ${values.diabetes_mellitus_history}`
+      detail: `警觉: ${values.alertness}, 平静: ${values.calmness}, 呼吸反应: ${values.respiratory_response}, 活动: ${values.physical_activity}, 肌张力: ${values.muscle_tone}, 面部紧张: ${values.facial_tension}, BP MAP: ${values.bp_map}, 心率: ${values.heart_rate}`
     };
   },
   interpretations: [
     {
-      condition: (score) => score === 0,
-      risk: '低风险',
-      text: '卒中风险极低，无需抗凝治疗。'
+      condition: (score) => score <= 16,
+      risk: '低镇静水平',
+      text: '患者镇静水平较低，可能需要调整镇静药物剂量。'
     },
     {
-      condition: (score) => score >= 1 && score <= 2,
-      risk: '中风险',
-      text: '建议根据患者具体情况考虑抗凝治疗。'
+      condition: (score) => score > 16 && score <= 30,
+      risk: '中等镇静水平',
+      text: '患者镇静水平适中，建议继续观察。'
     },
     {
-      condition: (score) => score > 2,
-      risk: '高风险',
-      text: '卒中风险较高，建议进行抗凝治疗。'
+      condition: (score) => score > 30,
+      risk: '高镇静水平',
+      text: '患者镇静水平过高，可能需要减少镇静药物剂量。'
     }
   ]
 }
 ,
 
-  child_pugh: {
-  id: 'child_pugh',
-  name: 'Child-Pugh评分',
-  description: '用于评估慢性肝病患者的肝功能状态及预后',
+  wat1: {
+  id: 'wat1',
+  name: 'WAT-1评分',
+  description: '用于评估儿童戒断综合征的严重程度',
   sections: [
     {
-      id: 'bilirubin',
-      title: '总胆红素',
-      name: 'bilirubin',
+      id: 'watery_stool',
+      title: '稀便/水样便',
+      name: 'watery_stool',
       type: 'radio',
       options: [
-        { value: '1', score: 1, label: '<2 mg/dL (<34.2 µmol/L)', checked: true },
-        { value: '2', score: 2, label: '2-3 mg/dL (34.2-51.3 µmol/L)', checked: false },
-        { value: '3', score: 3, label: '>3 mg/dL (>51.3 µmol/L)', checked: false }
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
       ]
     },
     {
-      id: 'albumin',
-      title: '白蛋白',
-      name: 'albumin',
+      id: 'vomiting',
+      title: '呕吐、恶心、干呕',
+      name: 'vomiting',
       type: 'radio',
       options: [
-        { value: '1', score: 1, label: '>3.5 g/dL (>35 g/L)', checked: true },
-        { value: '2', score: 2, label: '2.8-3.5 g/dL (28-35 g/L)', checked: false },
-        { value: '3', score: 3, label: '<2.8 g/dL (<28 g/L)', checked: false }
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
       ]
     },
     {
-      id: 'inr',
-      title: '国际标准化比率',
-      name: 'inr',
+      id: 'temperature',
+      title: '体温 > 37.8℃（长时间）',
+      name: 'temperature',
       type: 'radio',
       options: [
-        { value: '1', score: 1, label: '<1.7', checked: true },
-        { value: '2', score: 2, label: '1.7-2.3', checked: false },
-        { value: '3', score: 3, label: '>2.3', checked: false }
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
       ]
     },
     {
-      id: 'ascites',
-      title: '腹水',
-      name: 'ascites',
+      id: 'state',
+      title: '状态',
+      name: 'state',
       type: 'radio',
       options: [
-        { value: '1', score: 1, label: '没有', checked: true },
-        { value: '2', score: 2, label: '轻度', checked: false },
-        { value: '3', score: 3, label: '中度', checked: false }
+        { value: '0', score: 0, label: '睡眠/清醒/平静', checked: true },
+        { value: '1', score: 1, label: '清醒/痛苦/躁动', checked: false }
       ]
     },
     {
-      id: 'encephalopathy',
-      title: '肝性脑病',
-      name: 'encephalopathy',
+      id: 'tremor',
+      title: '震颤',
+      name: 'tremor',
       type: 'radio',
       options: [
-        { value: '1', score: 1, label: '无脑病', checked: true },
-        { value: '2', score: 2, label: '1-2级', checked: false },
-        { value: '3', score: 3, label: '3-4级', checked: false }
-      ]
-    }
-  ],
-  maxScore: 15,
-  calculateScore: (values) => {
-    const bilirubin = parseInt(values.bilirubin) || 0;
-    const albumin = parseInt(values.albumin) || 0;
-    const inr = parseInt(values.inr) || 0;
-    const ascites = parseInt(values.ascites) || 0;
-    const encephalopathy = parseInt(values.encephalopathy) || 0;
-    return bilirubin + albumin + inr + ascites + encephalopathy;
-  },
-  formatScore: (values, totalScore) => {
-    return {
-      total: `${totalScore}`,
-      detail: `总胆红素: ${values.bilirubin}, 白蛋白: ${values.albumin}, INR: ${values.inr}, 腹水: ${values.ascites}, 肝性脑病: ${values.encephalopathy}`
-    };
-  },
-  interpretations: [
-    {
-      condition: (score) => score <= 6,
-      risk: 'A级',
-      text: '肝功能良好，预后较好。'
-    },
-    {
-      condition: (score) => score >= 7 && score <= 9,
-      risk: 'B级',
-      text: '肝功能中度受损，需密切监测。'
-    },
-    {
-      condition: (score) => score >= 10,
-      risk: 'C级',
-      text: '肝功能严重受损，预后较差，需积极治疗。'
-    }
-  ]
-}
-,
-
-  glasgow_coma_scale: {
-  id: 'glasgow_coma_scale',
-  name: '格拉斯哥昏迷评分',
-  description: '用于评估患者意识状态的工具',
-  sections: [
-    {
-      id: 'best_eye_response',
-      title: '最佳眼反应',
-      name: 'best_eye_response',
-      type: 'radio',
-      options: [
-        { value: '4', score: 4, label: '自发地', checked: false },
-        { value: '3', score: 3, label: '对语言指令', checked: false },
-        { value: '2', score: 2, label: '对疼痛', checked: false },
-        { value: '1', score: 1, label: '无眼睁开', checked: false },
-        { value: '0', score: 0, label: '不可测试', checked: true }
+        { value: '0', score: 0, label: '无/轻微、间歇性', checked: true },
+        { value: '1', score: 1, label: '中等/严重', checked: false }
       ]
     },
     {
-      id: 'best_verbal_response',
-      title: '最佳言语反应',
-      name: 'best_verbal_response',
+      id: 'sweating',
+      title: '出汗',
+      name: 'sweating',
       type: 'radio',
       options: [
-        { value: '5', score: 5, label: '定向', checked: false },
-        { value: '4', score: 4, label: '困惑', checked: false },
-        { value: '3', score: 3, label: '不恰当的词语', checked: false },
-        { value: '2', score: 2, label: '无法理解的声音', checked: false },
-        { value: '1', score: 1, label: '无言语反应', checked: false },
-        { value: '0', score: 0, label: '不可测试/插管', checked: true }
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
       ]
     },
     {
-      id: 'best_motor_response',
-      title: '最佳运动反应',
-      name: 'best_motor_response',
+      id: 'uncoordinated_movements',
+      title: '不协调、重复运动（转头、甩腿或甩臂或弓身）',
+      name: 'uncoordinated_movements',
       type: 'radio',
       options: [
-        { value: '6', score: 6, label: '服从命令', checked: false },
-        { value: '5', score: 5, label: '定位疼痛', checked: false },
-        { value: '4', score: 4, label: '从疼痛中退缩', checked: false },
-        { value: '3', score: 3, label: '对疼痛屈曲', checked: false },
-        { value: '2', score: 2, label: '对疼痛伸展', checked: false },
-        { value: '1', score: 1, label: '无运动反应', checked: false },
-        { value: '0', score: 0, label: '不可测试', checked: true }
-      ]
-    }
-  ],
-  maxScore: 15,
-  calculateScore: (values) => {
-    const bestEyeResponse = parseInt(values.best_eye_response) || 0;
-    const bestVerbalResponse = parseInt(values.best_verbal_response) || 0;
-    const bestMotorResponse = parseInt(values.best_motor_response) || 0;
-    return bestEyeResponse + bestVerbalResponse + bestMotorResponse;
-  },
-  formatScore: (values, totalScore) => {
-    return {
-      total: `${totalScore}`,
-      detail: `眼反应: ${values.best_eye_response}, 言语反应: ${values.best_verbal_response}, 运动反应: ${values.best_motor_response}`
-    };
-  },
-  interpretations: [
-    {
-      condition: (score) => score >= 13,
-      risk: '轻度意识障碍',
-      text: '患者意识状态接近正常，但需继续观察。'
-    },
-    {
-      condition: (score) => score >= 9 && score <= 12,
-      risk: '中度意识障碍',
-      text: '患者存在中度意识障碍，建议进一步评估和治疗。'
-    },
-    {
-      condition: (score) => score < 9,
-      risk: '重度意识障碍',
-      text: '患者意识状态严重受损，需立即进行紧急处理。'
-    }
-  ]
-}
-,
-
-  heart_score: {
-  id: 'heart_score',
-  name: 'HEART评分',
-  description: '用于评估胸痛患者的心血管事件风险',
-  sections: [
-    {
-      id: 'history',
-      title: '病史',
-      name: 'history',
-      type: 'radio',
-      options: [
-        { value: '0', score: 0, label: '稍微可疑', checked: true },
-        { value: '1', score: 1, label: '中等可疑', checked: false },
-        { value: '2', score: 2, label: '高度可疑', checked: false }
+        { value: '0', score: 0, label: '无/轻微', checked: true },
+        { value: '1', score: 1, label: '中等/严重', checked: false }
       ]
     },
     {
-      id: 'ekg',
-      title: '心电图',
-      name: 'ekg',
+      id: 'yawning_sneezing',
+      title: '打哈欠或打喷嚏',
+      name: 'yawning_sneezing',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '≤1次', checked: true },
+        { value: '1', score: 1, label: '≥2次', checked: false }
+      ]
+    },
+    {
+      id: 'startle',
+      title: '刺激惊跳',
+      name: 'startle',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无/中等', checked: true },
+        { value: '1', score: 1, label: '中等/严重', checked: false }
+      ]
+    },
+    {
+      id: 'muscle_tone',
+      title: '肌张力',
+      name: 'muscle_tone',
       type: 'radio',
       options: [
         { value: '0', score: 0, label: '正常', checked: true },
-        { value: '1', score: 1, label: '非特异性复极化异常', checked: false },
-        { value: '2', score: 2, label: '显著ST段偏移', checked: false }
+        { value: '1', score: 1, label: '提高', checked: false }
       ]
     },
     {
-      id: 'age',
-      title: '年龄',
-      name: 'age',
+      id: 'calm_time',
+      title: '恢复平静时间',
+      name: 'calm_time',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '<45', checked: true },
-        { value: '1', score: 1, label: '45-64', checked: false },
-        { value: '2', score: 2, label: '≥65', checked: false }
-      ]
-    },
-    {
-      id: 'risk_factors',
-      title: '风险因素',
-      name: 'risk_factors',
-      type: 'radio',
-      options: [
-        { value: '0', score: 0, label: '无已知风险因素', checked: true },
-        { value: '1', score: 1, label: '1-2个风险因素', checked: false },
-        { value: '2', score: 2, label: '≥3个风险因素或有动脉粥样硬化疾病史', checked: false }
-      ]
-    },
-    {
-      id: 'initial_troponin',
-      title: '初始肌钙蛋白',
-      name: 'initial_troponin',
-      type: 'radio',
-      options: [
-        { value: '0', score: 0, label: '≤正常限值', checked: true },
-        { value: '1', score: 1, label: '1-3倍正常限值', checked: false },
-        { value: '2', score: 2, label: '>3倍正常限值', checked: false }
+        { value: '0', score: 0, label: '<2分钟', checked: true },
+        { value: '1', score: 1, label: '2-5分钟', checked: false },
+        { value: '2', score: 2, label: '>5分钟', checked: false }
       ]
     }
   ],
-  maxScore: 10,
+  maxScore: 12,
   calculateScore: (values) => {
-    const history = parseInt(values.history) || 0;
-    const ekg = parseInt(values.ekg) || 0;
-    const age = parseInt(values.age) || 0;
-    const riskFactors = parseInt(values.risk_factors) || 0;
-    const initialTroponin = parseInt(values.initial_troponin) || 0;
-    return history + ekg + age + riskFactors + initialTroponin;
+    const keys = [
+      'watery_stool',
+      'vomiting',
+      'temperature',
+      'state',
+      'tremor',
+      'sweating',
+      'uncoordinated_movements',
+      'yawning_sneezing',
+      'startle',
+      'muscle_tone',
+      'calm_time'
+    ];
+    return keys.reduce((total, key) => total + (parseInt(values[key]) || 0), 0);
   },
   formatScore: (values, totalScore) => {
     return {
       total: `${totalScore}`,
-      detail: `病史: ${values.history}, 心电图: ${values.ekg}, 年龄: ${values.age}, 风险因素: ${values.risk_factors}, 肌钙蛋白: ${values.initial_troponin}`
+      detail: `总分: ${totalScore}`
     };
   },
   interpretations: [
     {
-      condition: (score) => score <= 3,
+      condition: (score) => score < 4,
       risk: '低风险',
-      text: '建议门诊随访或观察。'
+      text: '症状轻微，无需特殊干预。'
     },
     {
-      condition: (score) => score >= 4 && score <= 6,
+      condition: (score) => score >= 4 && score <= 8,
       risk: '中风险',
-      text: '建议住院观察并进一步检查。'
+      text: '症状中等，建议密切观察并适当干预。'
     },
     {
-      condition: (score) => score >= 7,
+      condition: (score) => score > 8,
       risk: '高风险',
-      text: '建议立即住院并启动积极治疗。'
+      text: '症状严重，需立即干预并进行进一步评估。'
     }
   ]
 }
 ,
 
-  padua: {
-  id: 'padua',
-  name: 'Padua预测评分',
-  description: '用于评估住院患者静脉血栓栓塞（VTE）风险的工具',
+  cornell_assessment_of_pediatric_delirium: {
+  id: 'cornell_assessment_of_pediatric_delirium',
+  name: 'Cornell儿童谵妄评估量表',
+  description: '用于评估儿童谵妄的严重程度',
   sections: [
     {
-      id: 'active_cancer',
-      title: '活动性癌症',
-      name: 'active_cancer',
+      id: 'variable_1',
+      title: '患儿是否与照护者有眼神接触？',
+      name: 'variable_1',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '3', score: 3, label: '是', checked: false }
+        { value: '0', score: 0, label: '一直', checked: true },
+        { value: '1', score: 1, label: '经常', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '极少', checked: false },
+        { value: '4', score: 4, label: '从不', checked: false }
       ]
     },
     {
-      id: 'previous_vte',
-      title: '既往VTE（排除浅表静脉血栓）',
-      name: 'previous_vte',
+      id: 'variable_2',
+      title: '患儿是否有目的性的动作？',
+      name: 'variable_2',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '3', score: 3, label: '是', checked: false }
+        { value: '0', score: 0, label: '一直', checked: true },
+        { value: '1', score: 1, label: '经常', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '极少', checked: false },
+        { value: '4', score: 4, label: '从不', checked: false }
       ]
     },
     {
-      id: 'reduced_mobility',
-      title: '活动能力下降',
-      name: 'reduced_mobility',
+      id: 'variable_3',
+      title: '患儿是否能察觉周围环境的变化？',
+      name: 'variable_3',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '3', score: 3, label: '是', checked: false }
+        { value: '0', score: 0, label: '一直', checked: true },
+        { value: '1', score: 1, label: '经常', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '极少', checked: false },
+        { value: '4', score: 4, label: '从不', checked: false }
       ]
     },
     {
-      id: 'thrombophilic_condition',
-      title: '已知的血栓形成倾向条件',
-      name: 'thrombophilic_condition',
+      id: 'variable_4',
+      title: '患儿是否能表达需求？',
+      name: 'variable_4',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '3', score: 3, label: '是', checked: false }
+        { value: '0', score: 0, label: '一直', checked: true },
+        { value: '1', score: 1, label: '经常', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '极少', checked: false },
+        { value: '4', score: 4, label: '从不', checked: false }
       ]
     },
     {
-      id: 'recent_trauma_surgery',
-      title: '近期（≤1个月）创伤和/或手术',
-      name: 'recent_trauma_surgery',
+      id: 'variable_5',
+      title: '患儿是否烦躁不安？',
+      name: 'variable_5',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '2', score: 2, label: '是', checked: false }
+        { value: '0', score: 0, label: '从不', checked: true },
+        { value: '1', score: 1, label: '极少', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '经常', checked: false },
+        { value: '4', score: 4, label: '一直', checked: false }
       ]
     },
     {
-      id: 'elderly_age',
-      title: '高龄（≥70岁）',
-      name: 'elderly_age',
+      id: 'variable_6',
+      title: '患儿是否无法被安抚？',
+      name: 'variable_6',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
+        { value: '0', score: 0, label: '从不', checked: true },
+        { value: '1', score: 1, label: '极少', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '经常', checked: false },
+        { value: '4', score: 4, label: '一直', checked: false }
       ]
     },
     {
-      id: 'heart_respiratory_failure',
-      title: '心脏和/或呼吸衰竭',
-      name: 'heart_respiratory_failure',
+      id: 'variable_7',
+      title: '患儿是否活动过少——醒时几乎不动？',
+      name: 'variable_7',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
+        { value: '0', score: 0, label: '从不', checked: true },
+        { value: '1', score: 1, label: '极少', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '经常', checked: false },
+        { value: '4', score: 4, label: '一直', checked: false }
       ]
     },
     {
-      id: 'acute_mi_stroke',
-      title: '急性心肌梗死和/或缺血性中风',
-      name: 'acute_mi_stroke',
+      id: 'variable_8',
+      title: '患儿是否对互动反应过慢？',
+      name: 'variable_8',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
-      ]
-    },
-    {
-      id: 'acute_infection_rheumatologic',
-      title: '急性感染和/或风湿性疾病',
-      name: 'acute_infection_rheumatologic',
-      type: 'radio',
-      options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
-      ]
-    },
-    {
-      id: 'obesity',
-      title: '肥胖（BMI≥30）',
-      name: 'obesity',
-      type: 'radio',
-      options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
-      ]
-    },
-    {
-      id: 'hormonal_treatment',
-      title: '持续激素治疗',
-      name: 'hormonal_treatment',
-      type: 'radio',
-      options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
+        { value: '0', score: 0, label: '从不', checked: true },
+        { value: '1', score: 1, label: '极少', checked: false },
+        { value: '2', score: 2, label: '有时', checked: false },
+        { value: '3', score: 3, label: '经常', checked: false },
+        { value: '4', score: 4, label: '一直', checked: false }
       ]
     }
   ],
-  maxScore: 20,
+  maxScore: 32,
   calculateScore: (values) => {
     return Object.keys(values).reduce((total, key) => total + (parseInt(values[key]) || 0), 0);
   },
@@ -1059,128 +977,481 @@ flacc: {
   },
   interpretations: [
     {
-      condition: (score) => score < 4,
+      condition: (score) => score < 9,
       risk: '低风险',
-      text: '静脉血栓栓塞风险较低，无需预防性抗凝治疗。'
+      text: '患儿谵妄风险较低，建议继续观察。'
     },
     {
-      condition: (score) => score >= 4,
+      condition: (score) => score >= 9 && score <= 18,
+      risk: '中风险',
+      text: '患儿谵妄风险中等，建议进一步评估并采取干预措施。'
+    },
+    {
+      condition: (score) => score > 18,
       risk: '高风险',
-      text: '静脉血栓栓塞风险较高，建议预防性抗凝治疗。'
+      text: '患儿谵妄风险较高，建议立即采取干预措施。'
     }
   ]
 }
 ,
 
-  wells_criteria_for_pulmonary_embolism: {
-  id: 'wells_criteria_for_pulmonary_embolism',
-  name: 'Wells肺栓塞评分',
-  description: '用于评估肺栓塞的可能性',
+  prismiii: {
+  id: 'prismiii',
+  name: 'PRISM III评分',
+  description: '用于评估儿童重症监护病房患者的病情严重程度',
   sections: [
     {
-      id: 'clinical_signs_and_symptoms_of_dvt',
-      title: '深静脉血栓的临床症状和体征',
-      name: 'clinical_signs_and_symptoms_of_dvt',
+      id: 'systolic_blood_pressure',
+      title: '收缩压（mmHg）',
+      name: 'systolic_blood_pressure',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '3', score: 3, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '新生儿 40–55；婴儿 45–65；儿童 55–75；青少年 65–85', checked: false },
+        { value: '7', score: 7, label: '新生儿 <40；婴儿 <45；儿童 <55；青少年 <65', checked: false }
       ]
     },
     {
-      id: 'pe_is_1_diagnosis_or_equally_likely',
-      title: '肺栓塞为首要诊断或同等可能',
-      name: 'pe_is_1_diagnosis_or_equally_likely',
+      id: 'heart_rate',
+      title: '心率（次/分）',
+      name: 'heart_rate',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '3', score: 3, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '新生儿 215–225；婴儿 215–225；儿童 185–205；青少年 145–155', checked: false },
+        { value: '7', score: 7, label: '新生儿 >225；婴儿 >225；儿童 >205；青少年 >155', checked: false }
       ]
     },
     {
-      id: 'heart_rate_gt_100',
-      title: '心率 > 100',
-      name: 'heart_rate_gt_100',
+      id: 'temperature',
+      title: '体温',
+      name: 'temperature',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1.5', score: 1.5, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '所有年龄 <33℃（91.4℉）或 >40℃（104.0℉）', checked: false }
       ]
     },
     {
-      id: 'immobilization_at_least_3_days_or_surgery_in_the_previous_4_weeks',
-      title: '至少3天的制动或过去4周内手术',
-      name: 'immobilization_at_least_3_days_or_surgery_in_the_previous_4_weeks',
+      id: 'pupillary_reflexes',
+      title: '瞳孔反射',
+      name: 'pupillary_reflexes',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1.5', score: 1.5, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '7', score: 7, label: '所有年龄 一侧消失', checked: false },
+        { value: '11', score: 11, label: '所有年龄 双侧消失', checked: false }
       ]
     },
     {
-      id: 'previous_objectively_diagnosed_pe_or_dvt',
-      title: '既往客观诊断的肺栓塞或深静脉血栓',
-      name: 'previous_objectively_diagnosed_pe_or_dvt',
+      id: 'mental_status',
+      title: '神志状态',
+      name: 'mental_status',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1.5', score: 1.5, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '5', score: 5, label: '所有年龄 昏迷（GCS <8）', checked: false }
       ]
     },
     {
-      id: 'hemoptysis',
-      title: '咯血',
-      name: 'hemoptysis',
+      id: 'acidosis',
+      title: '酸中毒 (总CO₂或pH)',
+      name: 'acidosis',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '2', score: 2, label: '所有年龄 pH=7.0–7.28 或 TCO₂ 5–16.9 mmol/L', checked: false },
+        { value: '6', score: 6, label: '所有年龄 pH<7.0 或 TCO₂ <5 mmol/L', checked: false }
       ]
     },
     {
-      id: 'malignancy_w_treatment_within_6_months_or_palliative',
-      title: '恶性肿瘤且在6个月内接受治疗或姑息治疗',
-      name: 'malignancy_w_treatment_within_6_months_or_palliative',
+      id: 'total_co2',
+      title: 'CO₂总含量 (mmol/L)',
+      name: 'total_co2',
       type: 'radio',
       options: [
-        { value: '0', score: 0, label: '否', checked: true },
-        { value: '1', score: 1, label: '是', checked: false }
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '4', score: 4, label: '所有年龄 >34 mmol/L', checked: false }
+      ]
+    },
+    {
+      id: 'ph',
+      title: 'pH',
+      name: 'ph',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '2', score: 2, label: '所有年龄 7.48–7.55', checked: false },
+        { value: '3', score: 3, label: '所有年龄 >7.55', checked: false }
+      ]
+    },
+    {
+      id: 'pao2',
+      title: '动脉氧分压 (PaO₂, mmHg)',
+      name: 'pao2',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '所有年龄 42–49.9', checked: false },
+        { value: '6', score: 6, label: '所有年龄 <42.0', checked: false }
+      ]
+    },
+    {
+      id: 'pco2',
+      title: '动脉二氧化碳分压 (PaCO₂, mmHg)',
+      name: 'pco2',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '1', score: 1, label: '所有年龄 50–75', checked: false },
+        { value: '3', score: 3, label: '所有年龄 >75', checked: false }
+      ]
+    },
+    {
+      id: 'glucose',
+      title: '血糖',
+      name: 'glucose',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '2', score: 2, label: '所有年龄 >200 mg/dL 或 >11 mmol/L', checked: false }
+      ]
+    },
+    {
+      id: 'potassium',
+      title: '血钾',
+      name: 'potassium',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '所有年龄 >6.9 mmol/L', checked: false }
+      ]
+    },
+    {
+      id: 'creatinine',
+      title: '肌酐',
+      name: 'creatinine',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '2', score: 2, label: '新生儿 >0.85 mg/dL 或 >75 μmol/L；婴儿 >0.90 mg/dL 或 >80 μmol/L；儿童 >0.90 mg/dL 或 >80 μmol/L；青少年 >1.30 mg/dL 或 >115 μmol/L', checked: false }
+      ]
+    },
+    {
+      id: 'bun',
+      title: '血尿素氮 (BUN)',
+      name: 'bun',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '新生儿 >11.9 mg/dL 或 >4.3 μmol/L；其他年龄 >14.9 mg/dL 或 >5.4 μmol/L', checked: false }
+      ]
+    },
+    {
+      id: 'wbc',
+      title: '白细胞计数 (cells/mm³)',
+      name: 'wbc',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '4', score: 4, label: '所有年龄 <3000', checked: false }
+      ]
+    },
+    {
+      id: 'platelet',
+      title: '血小板计数 (cells/mm³)',
+      name: 'platelet',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '2', score: 2, label: '所有年龄 100,000–200,000', checked: false },
+        { value: '4', score: 4, label: '所有年龄 50,000–99,999', checked: false },
+        { value: '5', score: 5, label: '所有年龄 <50,000', checked: false }
+      ]
+    },
+    {
+      id: 'pt_aptt',
+      title: 'PT或APTT (s)',
+      name: 'pt_aptt',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '正常范围', checked: true },
+        { value: '3', score: 3, label: '新生儿 PT>22.0 或 PTT>85.0；其他年龄 PT>22.0 或 PTT>57.0', checked: false }
       ]
     }
   ],
-  maxScore: 12.5,
+  maxScore: 74,
   calculateScore: (values) => {
-    const clinicalSigns = parseFloat(values.clinical_signs_and_symptoms_of_dvt) || 0;
-    const peDiagnosis = parseFloat(values.pe_is_1_diagnosis_or_equally_likely) || 0;
-    const heartRate = parseFloat(values.heart_rate_gt_100) || 0;
-    const immobilization = parseFloat(values.immobilization_at_least_3_days_or_surgery_in_the_previous_4_weeks) || 0;
-    const previousPE = parseFloat(values.previous_objectively_diagnosed_pe_or_dvt) || 0;
-    const hemoptysis = parseFloat(values.hemoptysis) || 0;
-    const malignancy = parseFloat(values.malignancy_w_treatment_within_6_months_or_palliative) || 0;
-
-    return clinicalSigns + peDiagnosis + heartRate + immobilization + previousPE + hemoptysis + malignancy;
+    return Object.values(values).reduce((total, value) => total + (parseInt(value) || 0), 0);
   },
   formatScore: (values, totalScore) => {
     return {
       total: `${totalScore}`,
-      detail: `深静脉血栓: ${values.clinical_signs_and_symptoms_of_dvt}, 肺栓塞诊断: ${values.pe_is_1_diagnosis_or_equally_likely}, 心率: ${values.heart_rate_gt_100}, 制动/手术: ${values.immobilization_at_least_3_days_or_surgery_in_the_previous_4_weeks}, 既往肺栓塞: ${values.previous_objectively_diagnosed_pe_or_dvt}, 咯血: ${values.hemoptysis}, 恶性肿瘤: ${values.malignancy_w_treatment_within_6_months_or_palliative}`
+      detail: `各项评分: ${JSON.stringify(values)}`
     };
   },
   interpretations: [
     {
-      condition: (score) => score <= 4,
+      condition: (score) => score < 10,
       risk: '低风险',
-      text: '肺栓塞可能性低，建议进一步排除其他诊断。'
+      text: '病情较轻，建议密切观察。'
     },
     {
-      condition: (score) => score > 4 && score <= 6,
+      condition: (score) => score >= 10 && score < 20,
       risk: '中风险',
-      text: '肺栓塞可能性中等，建议进行影像学检查以确认诊断。'
+      text: '病情中等，建议加强监护。'
+    },
+    {
+      condition: (score) => score >= 20,
+      risk: '高风险',
+      text: '病情严重，建议立即采取积极治疗措施。'
+    }
+  ]
+}
+,
+
+  sepsis_score: {
+  id: 'sepsis_score',
+  name: '脓毒症评分',
+  description: '用于评估脓毒症患者的严重程度',
+  sections: [
+    {
+      id: 'respiratory_system_function',
+      title: '呼吸系统功能（最高3分）',
+      name: 'respiratory_system_function',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: 'PaO₂/FiO₂≥400 mmHg 或 SpO₂/FiO₂≥292', checked: true },
+        { value: '1', score: 1, label: 'FiO₂<400 mmHg 或任何呼吸支持下的 SpO₂/FiO₂<292', checked: false },
+        { value: '2', score: 2, label: 'PaO₂/FiO₂ 100–200 mmHg 并且 IMV 或 SpO₂/FiO₂ 148–220 并且 IMV', checked: false },
+        { value: '3', score: 3, label: 'PaO₂/FiO₂<100 mmHg 并且 IMV 或 SpO₂/FiO₂ <148 并且 IMV', checked: false }
+      ]
+    },
+    {
+      id: 'cardiovascular_system_function',
+      title: '心血管系统功能（最高6分）',
+      name: 'cardiovascular_system_function',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '未使用血管活性药物，乳酸<5 mmol/L', checked: true },
+        { value: '1', score: 1, label: '使用1种血管活性药物，乳酸5~10.9 mmol/L（每项1分，至多3项）', checked: false },
+        { value: '2', score: 2, label: '使用两种及以上的血管活性药物，乳酸≥11 mmol/L（每项2分，至多3项）', checked: false }
+      ]
+    },
+    {
+      id: 'mean_arterial_pressure',
+      title: '平均动脉压(mmHg)（最高2分）',
+      name: 'mean_arterial_pressure',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '<1个月>30; 1-11个月>38; 1-<2岁>43; 2-<5岁>44; 5-<12岁>48; 12-<18岁>51', checked: true },
+        { value: '1', score: 1, label: '17-30; 25-38; 31-43; 32-44; 36-48; 38-51', checked: false },
+        { value: '2', score: 2, label: '<17; <25; <31; <32; <36; <38', checked: false }
+      ]
+    },
+    {
+      id: 'coagulation_function',
+      title: '凝血功能（最高2分）',
+      name: 'coagulation_function',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '血小板≥100×10^3/μL, 国际标准化比值≤1.3, D-二聚体≤2 mg/L FEU, 纤维蛋白原>100 mg/dL', checked: true },
+        { value: '1', score: 1, label: '血小板<100×10^3/μL, 国际标准化比值>1.3, D-二聚体>2 mg/L FEU, 纤维蛋白原<100 mg/dL（每项1分，至多两项）', checked: false }
+      ]
+    },
+    {
+      id: 'nervous_system_function',
+      title: '神经系统功能（最高2分）',
+      name: 'nervous_system_function',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '格拉斯哥昏迷评分>10分，瞳孔对光反射存在', checked: true },
+        { value: '1', score: 1, label: '格拉斯哥昏迷评分≤10分', checked: false },
+        { value: '2', score: 2, label: '双侧瞳孔固定', checked: false }
+      ]
+    }
+  ],
+  maxScore: 15,
+  calculateScore: (values) => {
+    const respiratory = parseInt(values.respiratory_system_function) || 0;
+    const cardiovascular = parseInt(values.cardiovascular_system_function) || 0;
+    const map = parseInt(values.mean_arterial_pressure) || 0;
+    const coagulation = parseInt(values.coagulation_function) || 0;
+    const nervous = parseInt(values.nervous_system_function) || 0;
+    return respiratory + cardiovascular + map + coagulation + nervous;
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: `呼吸: ${values.respiratory_system_function}, 心血管: ${values.cardiovascular_system_function}, 平均动脉压: ${values.mean_arterial_pressure}, 凝血: ${values.coagulation_function}, 神经: ${values.nervous_system_function}`
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score < 2,
+      risk: '低风险',
+      text: '患者风险较低，建议密切观察。'
+    },
+    {
+      condition: (score) => score >= 2 && score <= 6,
+      risk: '中风险',
+      text: '患者存在中度风险，建议进一步评估和治疗。'
     },
     {
       condition: (score) => score > 6,
       risk: '高风险',
-      text: '肺栓塞可能性高，建议立即进行影像学检查并启动治疗。'
+      text: '患者风险较高，建议立即启动脓毒症治疗流程。'
+    }
+  ]
+}
+,
+
+  cdss: {
+  id: 'cdss',
+  name: 'CDSS评分',
+  description: '用于评估弥散性血管内凝血（DIC）的严重程度',
+  sections: [
+    {
+      id: 'primary_disease',
+      title: '存在导致 DIC 的原发病',
+      name: 'primary_disease',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '2', score: 2, label: '有', checked: false }
+      ]
+    },
+    {
+      id: 'bleeding_tendency',
+      title: '不能用原发病解释的严重或多发出血倾向',
+      name: 'bleeding_tendency',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
+      ]
+    },
+    {
+      id: 'microcirculation_disorder',
+      title: '不能用原发病解释的微循环障碍或休克',
+      name: 'microcirculation_disorder',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
+      ]
+    },
+    {
+      id: 'organ_dysfunction',
+      title: '广泛性皮肤、黏膜栓塞，灶性缺血性坏死、脱落及溃疡形成，不宁原因的肺、肾、脑等脏器功能障碍',
+      name: 'organ_dysfunction',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
+      ]
+    },
+    {
+      id: 'platelet_count_non_malignant',
+      title: '血小板计数（非恶性血液病）',
+      name: 'platelet_count_non_malignant',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '≥100*10^9/L', checked: true },
+        { value: '1', score: 1, label: '80-<100*10^9/L', checked: false },
+        { value: '2', score: 2, label: '<80*10^9/L', checked: false }
+      ]
+    },
+    {
+      id: 'platelet_drop_non_malignant',
+      title: '血小板计数（非恶性血液病）24h内下降',
+      name: 'platelet_drop_non_malignant',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '未下降', checked: true },
+        { value: '1', score: 1, label: '≥50%', checked: false }
+      ]
+    },
+    {
+      id: 'platelet_count_malignant',
+      title: '血小板计数（恶性血液病）',
+      name: 'platelet_count_malignant',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '≥50*10^9/L', checked: true },
+        { value: '1', score: 1, label: '<50*10^9/L', checked: false }
+      ]
+    },
+    {
+      id: 'platelet_drop_malignant',
+      title: '血小板计数（恶性血液病）24h内下降',
+      name: 'platelet_drop_malignant',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '未下降', checked: true },
+        { value: '1', score: 1, label: '≥50%', checked: false }
+      ]
+    },
+    {
+      id: 'd_dimer',
+      title: 'D-2聚体',
+      name: 'd_dimer',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '<5mg/L', checked: true },
+        { value: '2', score: 2, label: '5-<9mg/L', checked: false },
+        { value: '3', score: 3, label: '≥9mg/L', checked: false }
+      ]
+    },
+    {
+      id: 'pt_aptt',
+      title: 'PT及APTT延长',
+      name: 'pt_aptt',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: 'PT延长<3s且APTT延长<10s', checked: true },
+        { value: '1', score: 1, label: 'PT延长≥3s且APTT延长≥10s', checked: false },
+        { value: '2', score: 2, label: 'PT延长≥6s', checked: false }
+      ]
+    },
+    {
+      id: 'fibrinogen',
+      title: '纤维蛋白原',
+      name: 'fibrinogen',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '≥1.0g/L', checked: true },
+        { value: '1', score: 1, label: '<1.0g/L', checked: false }
+      ]
+    }
+  ],
+  maxScore: 20,
+  calculateScore: (values) => {
+    return Object.keys(values).reduce((total, key) => total + (parseInt(values[key]) || 0), 0);
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: Object.keys(values)
+        .map((key) => `${key}: ${values[key]}`)
+        .join(', ')
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score < 5,
+      risk: '低风险',
+      text: 'DIC风险较低，建议密切观察。'
+    },
+    {
+      condition: (score) => score >= 5 && score <= 9,
+      risk: '中风险',
+      text: '存在DIC中度风险，建议进一步检查和治疗。'
+    },
+    {
+      condition: (score) => score > 9,
+      risk: '高风险',
+      text: 'DIC高风险，需立即干预和治疗。'
     }
   ]
 }
