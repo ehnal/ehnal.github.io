@@ -40,7 +40,7 @@ const scales = {
 
   /**
  * Phoenix脓毒症评分量表配置 - 修复后的版本
- */
+ 
   phoenix: {
     id: 'phoenix',
     name: 'Phoenix脓毒症评分',
@@ -205,6 +205,7 @@ const scales = {
       }
     ]
   },
+*/
 
   /**
    * STOP-BANG评分量表配置
