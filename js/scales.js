@@ -1456,6 +1456,654 @@ flacc: {
     }
   ]
 }
+,
+
+
+
+  faril: {
+  id: 'faril',
+  name: 'FARIL评分',
+  description: '用于评估老年人衰弱状态的工具',
+  sections: [
+    {
+      id: 'fatigue',
+      title: '疲乏',
+      name: 'fatigue',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '否', checked: true },
+        { value: '1', score: 1, label: '过去4周内大部分时间或所有时间感到疲乏', checked: false }
+      ]
+    },
+    {
+      id: 'resistance',
+      title: '阻力增加/耐力减退',
+      name: 'resistance',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '否', checked: true },
+        { value: '1', score: 1, label: '在不用任何辅助工具及不用他人帮助的情况下，中途不休息爬1层楼梯有困难', checked: false }
+      ]
+    },
+    {
+      id: 'ambulation',
+      title: '自由活动下降',
+      name: 'ambulation',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '否', checked: true },
+        { value: '1', score: 1, label: '在不用任何辅助工具及不用他人帮助的情况下，走完1个街区（100m）较困难', checked: false }
+      ]
+    },
+    {
+      id: 'illness',
+      title: '疾病情况',
+      name: 'illness',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '否', checked: true },
+        { value: '1', score: 1, label: '医生曾告诉你存在5种以上如下疾病：高血压、糖尿病、急性心脏疾病发作、卒中、恶性肿瘤（皮肤癌除外）充血性心力衰竭、哮喘、关节炎、慢性肺病、肾脏疾病、心绞痛等', checked: false }
+      ]
+    },
+    {
+      id: 'weight_loss',
+      title: '体重下降',
+      name: 'weight_loss',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '否', checked: true },
+        { value: '1', score: 1, label: '1年或更短时间内出现体重下降≥5%', checked: false }
+      ]
+    }
+  ],
+  maxScore: 5,
+  calculateScore: (values) => {
+    const fatigue = parseInt(values.fatigue) || 0;
+    const resistance = parseInt(values.resistance) || 0;
+    const ambulation = parseInt(values.ambulation) || 0;
+    const illness = parseInt(values.illness) || 0;
+    const weightLoss = parseInt(values.weight_loss) || 0;
+    return fatigue + resistance + ambulation + illness + weightLoss;
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: `疲乏: ${values.fatigue}, 阻力: ${values.resistance}, 自由活动: ${values.ambulation}, 疾病: ${values.illness}, 体重: ${values.weight_loss}`
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score === 0,
+      risk: '无衰弱',
+      text: '未发现衰弱状态，建议保持健康生活方式。'
+    },
+    {
+      condition: (score) => score >= 1 && score <= 2,
+      risk: '潜在衰弱',
+      text: '存在轻度衰弱风险，建议加强锻炼和营养管理。'
+    },
+    {
+      condition: (score) => score >= 3,
+      risk: '衰弱',
+      text: '存在明显衰弱状态，建议进行全面评估并制定干预计划。'
+    }
+  ]
+}
+,
+
+  basic_daily_living_ability_assessment_table: {
+  id: 'basic_daily_living_ability_assessment_table',
+  name: '基本日常生活能力评估表',
+  description: '用于评估个体在日常生活活动中的独立性水平',
+  sections: [
+    {
+      id: 'eating',
+      title: '进食',
+      name: 'eating',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '需极大帮助或完全依赖他人', checked: true },
+        { value: '5', score: 5, label: '需部分帮助', checked: false },
+        { value: '10', score: 10, label: '可独立进食', checked: false }
+      ]
+    },
+    {
+      id: 'bathing',
+      title: '洗澡',
+      name: 'bathing',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '在过程中需他人帮助', checked: true },
+        { value: '5', score: 5, label: '准备好洗澡水后，可独立完成洗澡', checked: false }
+      ]
+    },
+    {
+      id: 'grooming',
+      title: '修饰',
+      name: 'grooming',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '需他人帮助', checked: true },
+        { value: '5', score: 5, label: '可独立完成（洗脸、梳头、刷牙、剃须等）', checked: false }
+      ]
+    },
+    {
+      id: 'dressing',
+      title: '穿衣',
+      name: 'dressing',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '需极大帮助或完全依赖他人', checked: true },
+        { value: '5', score: 5, label: '需部分帮助', checked: false },
+        { value: '10', score: 10, label: '可独立完成（穿脱衣服、鞋袜、系扣子等）', checked: false }
+      ]
+    },
+    {
+      id: 'bowel_control',
+      title: '控制大便',
+      name: 'bowel_control',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '完全失控', checked: true },
+        { value: '5', score: 5, label: '偶尔失控，或需要他人提示', checked: false },
+        { value: '10', score: 10, label: '可控制大便', checked: false }
+      ]
+    },
+    {
+      id: 'urine_control',
+      title: '控制小便',
+      name: 'urine_control',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '完全失控', checked: true },
+        { value: '5', score: 5, label: '偶尔失控，或需要他人提示', checked: false },
+        { value: '10', score: 10, label: '可控制小便', checked: false }
+      ]
+    },
+    {
+      id: 'toileting',
+      title: '如厕',
+      name: 'toileting',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '需极大帮助或完全依赖他人', checked: true },
+        { value: '5', score: 5, label: '需部分帮助', checked: false },
+        { value: '10', score: 10, label: '可独立完成', checked: false }
+      ]
+    },
+    {
+      id: 'bed_chair_transfer',
+      title: '床椅转移',
+      name: 'bed_chair_transfer',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '完全依赖他人', checked: true },
+        { value: '5', score: 5, label: '需大量帮助（2人），能坐', checked: false },
+        { value: '10', score: 10, label: '需部分帮助（1人）或指导', checked: false },
+        { value: '15', score: 15, label: '可独立完成', checked: false }
+      ]
+    },
+    {
+      id: 'walking',
+      title: '平地行走',
+      name: 'walking',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '不能移动，或移动少于45米', checked: true },
+        { value: '5', score: 5, label: '独自操纵轮椅移动超过45米，包括转弯', checked: false },
+        { value: '10', score: 10, label: '需1人帮助步行超过45米（体力或言语指导）', checked: false },
+        { value: '15', score: 15, label: '可独立步行超过45米（可用辅助器）', checked: false }
+      ]
+    },
+    {
+      id: 'stairs',
+      title: '上下楼梯',
+      name: 'stairs',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '需极大帮助或完全依赖他人', checked: true },
+        { value: '5', score: 5, label: '需部分帮助（体力、言语指导、辅助器）', checked: false },
+        { value: '10', score: 10, label: '可独立上下楼梯', checked: false }
+      ]
+    }
+  ],
+  maxScore: 100,
+  calculateScore: (values) => {
+    const eating = parseInt(values.eating) || 0;
+    const bathing = parseInt(values.bathing) || 0;
+    const grooming = parseInt(values.grooming) || 0;
+    const dressing = parseInt(values.dressing) || 0;
+    const bowelControl = parseInt(values.bowel_control) || 0;
+    const urineControl = parseInt(values.urine_control) || 0;
+    const toileting = parseInt(values.toileting) || 0;
+    const bedChairTransfer = parseInt(values.bed_chair_transfer) || 0;
+    const walking = parseInt(values.walking) || 0;
+    const stairs = parseInt(values.stairs) || 0;
+
+    return eating + bathing + grooming + dressing + bowelControl + urineControl + toileting + bedChairTransfer + walking + stairs;
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: `进食: ${values.eating}, 洗澡: ${values.bathing}, 修饰: ${values.grooming}, 穿衣: ${values.dressing}, 控制大便: ${values.bowel_control}, 控制小便: ${values.urine_control}, 如厕: ${values.toileting}, 床椅转移: ${values.bed_chair_transfer}, 平地行走: ${values.walking}, 上下楼梯: ${values.stairs}`
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score >= 80,
+      risk: '独立',
+      text: '患者在日常生活中表现出较高的独立性，无需额外帮助。'
+    },
+    {
+      condition: (score) => score >= 50 && score < 80,
+      risk: '部分依赖',
+      text: '患者在日常生活中需要一定的帮助，但仍能完成部分活动。'
+    },
+    {
+      condition: (score) => score < 50,
+      risk: '完全依赖',
+      text: '患者在日常生活中需要极大的帮助或完全依赖他人。'
+    }
+  ]
+}
+,
+
+  muscle_wasting_screening_table: {
+  id: 'muscle_wasting_screening_table',
+  name: '肌肉减少症筛查表',
+  description: '用于评估肌肉减少症风险的筛查工具',
+  sections: [
+    {
+      id: 'age',
+      title: '年龄',
+      name: 'age',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '＜70岁', checked: true },
+        { value: '1', score: 1, label: '≥70岁', checked: false }
+      ]
+    },
+    {
+      id: 'weight_loss',
+      title: '是否比上一年体重减轻',
+      name: 'weight_loss',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无减轻或减轻≤2kg', checked: true },
+        { value: '1', score: 1, label: '减轻＞2kg', checked: false }
+      ]
+    },
+    {
+      id: 'calf_circumference',
+      title: '小腿围测量值',
+      name: 'calf_circumference',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '男性≥24cm，女性≥33cm', checked: true },
+        { value: '1', score: 1, label: '男性＜24cm，女性＜33cm', checked: false }
+      ]
+    },
+    {
+      id: 'grip_strength',
+      title: '握力',
+      name: 'grip_strength',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '男性≥28kg，女性≥18kg', checked: true },
+        { value: '1', score: 1, label: '男性＜28kg，女性＜18kg', checked: false }
+      ]
+    },
+    {
+      id: 'carry_weight',
+      title: '提起并搬运4.5公斤重物是否困难',
+      name: 'carry_weight',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无困难', checked: true },
+        { value: '1', score: 1, label: '有一些困难', checked: false },
+        { value: '2', score: 2, label: '有很大困难或不能完成', checked: false }
+      ]
+    },
+    {
+      id: 'walk_room',
+      title: '步行走过房间是否困难',
+      name: 'walk_room',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无困难', checked: true },
+        { value: '1', score: 1, label: '有一些困难', checked: false },
+        { value: '2', score: 2, label: '有很大困难，需要辅助，或不能完成', checked: false }
+      ]
+    },
+    {
+      id: 'rise_bed_chair',
+      title: '从床上或者椅子上起身是否困难',
+      name: 'rise_bed_chair',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无困难', checked: true },
+        { value: '1', score: 1, label: '有一些困难', checked: false },
+        { value: '2', score: 2, label: '有很大困难，或没有他人帮助不能完成', checked: false }
+      ]
+    },
+    {
+      id: 'climb_stairs',
+      title: '上10级台阶是否困难',
+      name: 'climb_stairs',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无困难', checked: true },
+        { value: '1', score: 1, label: '有一些困难', checked: false },
+        { value: '2', score: 2, label: '有很大困难或不能完成', checked: false }
+      ]
+    },
+    {
+      id: 'fall_count',
+      title: '近1年跌倒次数',
+      name: 'fall_count',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '0次', checked: true },
+        { value: '1', score: 1, label: '1-3次', checked: false },
+        { value: '2', score: 2, label: '4次及以上', checked: false }
+      ]
+    },
+    {
+      id: 'daily_meat_dairy',
+      title: '是否每日食用肉类和奶制品',
+      name: 'daily_meat_dairy',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '是', checked: true },
+        { value: '1', score: 1, label: '否', checked: false }
+      ]
+    }
+  ],
+  maxScore: 16,
+  calculateScore: (values) => {
+    const age = parseInt(values.age) || 0;
+    const weight_loss = parseInt(values.weight_loss) || 0;
+    const calf_circumference = parseInt(values.calf_circumference) || 0;
+    const grip_strength = parseInt(values.grip_strength) || 0;
+    const carry_weight = parseInt(values.carry_weight) || 0;
+    const walk_room = parseInt(values.walk_room) || 0;
+    const rise_bed_chair = parseInt(values.rise_bed_chair) || 0;
+    const climb_stairs = parseInt(values.climb_stairs) || 0;
+    const fall_count = parseInt(values.fall_count) || 0;
+    const daily_meat_dairy = parseInt(values.daily_meat_dairy) || 0;
+
+    return (
+      age +
+      weight_loss +
+      calf_circumference +
+      grip_strength +
+      carry_weight +
+      walk_room +
+      rise_bed_chair +
+      climb_stairs +
+      fall_count +
+      daily_meat_dairy
+    );
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: `年龄: ${values.age}, 体重减轻: ${values.weight_loss}, 小腿围: ${values.calf_circumference}, 握力: ${values.grip_strength}, 提重困难: ${values.carry_weight}, 步行困难: ${values.walk_room}, 起身困难: ${values.rise_bed_chair}, 上台阶困难: ${values.climb_stairs}, 跌倒次数: ${values.fall_count}, 肉类奶制品: ${values.daily_meat_dairy}`
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score < 4,
+      risk: '低风险',
+      text: '肌肉减少症风险较低，无需特别干预。'
+    },
+    {
+      condition: (score) => score >= 4 && score <= 8,
+      risk: '中风险',
+      text: '存在一定肌肉减少症风险，建议进行进一步评估和干预。'
+    },
+    {
+      condition: (score) => score > 8,
+      risk: '高风险',
+      text: '肌肉减少症风险较高，建议尽快进行专业治疗和干预。'
+    }
+  ]
+}
+,
+
+  iadl: {
+  id: 'iadl',
+  name: '工具性日常生活活动能力评估（IADL）',
+  description: '评估老年人日常生活中工具性活动能力的量表',
+  sections: [
+    {
+      id: 'transportation',
+      title: '使用交通工具',
+      name: 'transportation',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '在他人帮助下坐公车', checked: true },
+        { value: '0', score: 0, label: '仅在他人陪伴下打车或从不离开家', checked: false }
+      ]
+    },
+    {
+      id: 'cooking',
+      title: '做饭',
+      name: 'cooking',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '自理-包括自己准备原料', checked: true },
+        { value: '0', score: 0, label: '需别人准备、做饭', checked: false }
+      ]
+    },
+    {
+      id: 'medication',
+      title: '服药',
+      name: 'medication',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '能在正确时间服用正确剂量', checked: true },
+        { value: '0', score: 0, label: '不能自己服药', checked: false }
+      ]
+    },
+    {
+      id: 'laundry',
+      title: '洗衣',
+      name: 'laundry',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '能洗小的衣物：清洗短袜以及长筒袜等', checked: true },
+        { value: '0', score: 0, label: '所有衣物必须由别人洗', checked: false }
+      ]
+    },
+    {
+      id: 'telephone',
+      title: '打电话',
+      name: 'telephone',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '能接能拨熟悉的电话号或能接不能打', checked: true },
+        { value: '0', score: 0, label: '不能用电话', checked: false }
+      ]
+    },
+    {
+      id: 'finance',
+      title: '理财',
+      name: 'finance',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '能自己购物但在银行需有人帮助', checked: true },
+        { value: '0', score: 0, label: '不能管钱', checked: false }
+      ]
+    },
+    {
+      id: 'shopping',
+      title: '购物',
+      name: 'shopping',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '能独立购买所有东西', checked: true },
+        { value: '0', score: 0, label: '购物需陪人陪同或不能自己购物', checked: false }
+      ]
+    },
+    {
+      id: 'housework',
+      title: '做家务',
+      name: 'housework',
+      type: 'radio',
+      options: [
+        { value: '1', score: 1, label: '能做轻的家务但做的不好或需要人帮助', checked: true },
+        { value: '0', score: 0, label: '不能做家务', checked: false }
+      ]
+    }
+  ],
+  maxScore: 8,
+  calculateScore: (values) => {
+    const transportation = parseInt(values.transportation) || 0;
+    const cooking = parseInt(values.cooking) || 0;
+    const medication = parseInt(values.medication) || 0;
+    const laundry = parseInt(values.laundry) || 0;
+    const telephone = parseInt(values.telephone) || 0;
+    const finance = parseInt(values.finance) || 0;
+    const shopping = parseInt(values.shopping) || 0;
+    const housework = parseInt(values.housework) || 0;
+
+    return transportation + cooking + medication + laundry + telephone + finance + shopping + housework;
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: `交通工具: ${values.transportation}, 做饭: ${values.cooking}, 服药: ${values.medication}, 洗衣: ${values.laundry}, 打电话: ${values.telephone}, 理财: ${values.finance}, 购物: ${values.shopping}, 做家务: ${values.housework}`
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score === 8,
+      risk: '完全独立',
+      text: '患者在工具性日常生活活动中表现完全独立，无需帮助。'
+    },
+    {
+      condition: (score) => score >= 4 && score < 8,
+      risk: '部分依赖',
+      text: '患者在工具性日常生活活动中表现部分依赖，需要一定帮助。'
+    },
+    {
+      condition: (score) => score < 4,
+      risk: '完全依赖',
+      text: '患者在工具性日常生活活动中表现完全依赖，需要全面帮助。'
+    }
+  ]
+}
+,
+
+ 
+  wells: {
+  id: 'wells',
+  name: 'Wells肺栓塞评分',
+  description: '用于评估肺栓塞的可能性',
+  sections: [
+    {
+      id: 'history_pe_dvt',
+      title: '既往肺栓塞或深静脉血栓',
+      name: 'history_pe_dvt',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有', checked: false }
+      ]
+    },
+    {
+      id: 'heart_rate',
+      title: '心率>100次/分钟',
+      name: 'heart_rate',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '心率大于100次/分钟', checked: false }
+      ]
+    },
+    {
+      id: 'recent_surgery',
+      title: '过去4周内手术或制动',
+      name: 'recent_surgery',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '过去4周内有手术或制动', checked: false }
+      ]
+    },
+    {
+      id: 'hemoptysis',
+      title: '咯血',
+      name: 'hemoptysis',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有咯血', checked: false }
+      ]
+    },
+    {
+      id: 'active_cancer',
+      title: '活动性癌症',
+      name: 'active_cancer',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '1', score: 1, label: '有活动性癌症', checked: false }
+      ]
+    },
+    {
+      id: 'dvt_signs',
+      title: '深静脉血栓临床体征',
+      name: 'dvt_signs',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '3', score: 3, label: '有深静脉血栓临床体征', checked: false }
+      ]
+    },
+    {
+      id: 'pe_more_likely',
+      title: '其他诊断可能性小于肺栓塞',
+      name: 'pe_more_likely',
+      type: 'radio',
+      options: [
+        { value: '0', score: 0, label: '无', checked: true },
+        { value: '3', score: 3, label: '其他诊断可能性小于肺栓塞', checked: false }
+      ]
+    }
+  ],
+  maxScore: 12,
+  calculateScore: (values) => {
+    const history_pe_dvt = parseInt(values.history_pe_dvt) || 0;
+    const heart_rate = parseInt(values.heart_rate) || 0;
+    const recent_surgery = parseInt(values.recent_surgery) || 0;
+    const hemoptysis = parseInt(values.hemoptysis) || 0;
+    const active_cancer = parseInt(values.active_cancer) || 0;
+    const dvt_signs = parseInt(values.dvt_signs) || 0;
+    const pe_more_likely = parseInt(values.pe_more_likely) || 0;
+
+    return history_pe_dvt + heart_rate + recent_surgery + hemoptysis + active_cancer + dvt_signs + pe_more_likely;
+  },
+  formatScore: (values, totalScore) => {
+    return {
+      total: `${totalScore}`,
+      detail: `既往肺栓塞/深静脉血栓: ${values.history_pe_dvt}, 心率: ${values.heart_rate}, 手术/制动: ${values.recent_surgery}, 咯血: ${values.hemoptysis}, 活动性癌症: ${values.active_cancer}, 深静脉血栓体征: ${values.dvt_signs}, 其他诊断可能性: ${values.pe_more_likely}`
+    };
+  },
+  interpretations: [
+    {
+      condition: (score) => score <= 4,
+      risk: '肺栓塞不太可能',
+      text: '建议进一步检查以排除肺栓塞。'
+    },
+    {
+      condition: (score) => score >= 5,
+      risk: '肺栓塞可能',
+      text: '建议进一步检查以确诊肺栓塞。'
+    }
+  ]
+}
 };
 
 export default scales;

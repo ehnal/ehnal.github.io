@@ -36,7 +36,7 @@ class ScaleRenderer {
         </div>
         <div class="result-content">
           <p>总分: <span id="${scaleConfig.id}-score">0</span>${scaleConfig.maxScore ? `/${scaleConfig.maxScore}` : ''}</p>
-          ${hasRadioSection ? `<p>分项: <span id="${scaleConfig.id}-detail"></span></p>` : ''}
+          
           <p>风险级别: <span id="${scaleConfig.id}-risk">-</span></p>
           <p>解释: <span id="${scaleConfig.id}-interpretation">-</span></p>
         </div>
